@@ -3,10 +3,12 @@ require.config({
         'pubnub': {
             deps: ['config'],
             init: function(config) {
-                return this.PUBNUB.init({
+                var pubnub = this.PUBNUB.init({
                     publish_key: config.pubKey,
                     subscribe_key: config.subKey
                 });
+                this.PUBNUB.ready();
+                return pubnub;
             }
         }
     }
